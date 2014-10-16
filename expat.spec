@@ -1,7 +1,8 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/expat.git
 Summary:	XML 1.0 parser
 Name:		expat
 Version:	2.1.0
-Release:	2
+Release:	3
 Epoch:		1
 License:	Thai Open Source Software Center Ltd (distributable)
 Group:		Applications/Publishing/XML
@@ -43,6 +44,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -61,7 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/{reference.html,style.css}
 %attr(755,root,root) %{_libdir}/libexpat.so
-%{_libdir}/libexpat.la
 %{_includedir}/expat*.h
 %{_pkgconfigdir}/*.pc
 
